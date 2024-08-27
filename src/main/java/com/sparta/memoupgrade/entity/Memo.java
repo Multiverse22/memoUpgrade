@@ -6,6 +6,9 @@ import com.sparta.memoupgrade.dto.memo.MemoUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Table(name="memo")
@@ -16,19 +19,25 @@ public class Memo extends Timestamped {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memoId;
+    private Long id;
 
-    @Column(nullable = false,length = 50)
+    @Column(name = "user_name",nullable = false,length = 50)
     private String userName;
 
     @Column(nullable = false,length = 50)
     private String title;
 
-    @Column(nullable = false,length = 50)
+    @Column(name = "memo_contents",nullable = false,length = 50)
     private String memoContents;
 
     @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
     private Boolean isDeleted = false;
+
+    @OneToMany(mappedBy = "memo",cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Comment> commentList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "memo")
+    private List<Draft> draftList = new ArrayList<>();
 
 
     public Memo(MemoPostRequestDto requestDto) {

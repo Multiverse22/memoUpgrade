@@ -20,7 +20,7 @@ public class MemoGetResponseDto {
     private LocalDateTime modifiedAt;
 
     public MemoGetResponseDto(Memo memo) {
-        this.memoId=memo.getMemoId();
+        this.memoId=memo.getId();
         this.userName=memo.getUserName();
         this.title=memo.getTitle();
         this.memoContents=memo.getMemoContents();

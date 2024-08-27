@@ -29,7 +29,7 @@ public class MemoService {
         Memo saveMemo = memoRepository.save(memo);
 
         // Entity -> ResponseDto
-        return new MemoResponseDto("작성 완료",201, saveMemo.getMemoId());
+        return new MemoResponseDto("작성 완료",201, saveMemo.getId());
     }
 
     public MemoGetResponseDto getMemo(Long memoId) {
@@ -54,6 +54,6 @@ public class MemoService {
         Memo memo = memoRepository.findById(memoId).
                 orElseThrow(()->new NoSuchElementException("Id에 해당하는 할일이 없습니다."));
         memo.update(requestDto);
-        return new MemoResponseDto("수정 완료",201, memo.getMemoId());
+        return new MemoResponseDto("수정 완료",201, memo.getId());
     }
 }
