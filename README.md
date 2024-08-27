@@ -11,7 +11,7 @@
     ”id”:03,
     "title":"오늘할일",
     "user”:”김창섭",
-    ”toDoListContents”:”코드개선”,
+    ”memoContents”:”코드개선”,
     ”creationDate”:2024-08-13 12:34:56,
     ”modifiedDate”:2024-08-13 12:34:56
   }
