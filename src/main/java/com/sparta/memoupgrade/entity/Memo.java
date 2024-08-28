@@ -20,7 +20,7 @@ public class Memo extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    //일정을 작성할때 어떤유저가 작성했는지를 받아온다.
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User writer;
@@ -31,11 +31,14 @@ public class Memo extends Timestamped {
     @Column(name = "memo_contents",nullable = false,length = 50)
     private String memoContents;
 
+    //해당일정에 연관된 댓글을 저장하는 리스트
+    //메모한개에 여러개의 댓글이 있을수있기때문에 1:N 관계
     @OneToMany(mappedBy = "memo",cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Comment> commentList = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "memo",fetch = FetchType.LAZY)
-//    private List<Draft> draftList = new ArrayList<>();
+    //중간테이블 Draft 생성
+    @OneToMany(mappedBy = "memo",fetch = FetchType.LAZY)
+    private List<Draft> draftList = new ArrayList<>();
 
     public void setWriter(User writer) {
         this.writer = writer;

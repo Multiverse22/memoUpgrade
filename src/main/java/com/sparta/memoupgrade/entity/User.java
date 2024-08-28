@@ -23,10 +23,11 @@ public class User extends Timestamped {
     @Column(name = "email",nullable = false,length = 50)
     private String email;
 
-    @OneToMany(mappedBy = "writer")
+    @OneToMany(mappedBy = "writer",cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Memo> memoList = new ArrayList<>();
-//    @OneToMany(mappedBy = "manager_user_id")
-//    private List<Draft> draftList = new ArrayList<>();
+    //5.일정을 작성한 작성자는 일정에 다른 유저들을 추가할 수 있다. 때문에 일정과 유저는 N:M 관계가 된다.
+    @OneToMany(mappedBy = "managerUser")
+    private List<Draft> draftList = new ArrayList<>();
 
     public User(UserRequestDto requestDto) {
         this.name = requestDto.getName();

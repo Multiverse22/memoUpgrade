@@ -24,15 +24,18 @@ public class MemoService {
         this.memoRepository = memoRepository;
         this.userRepository = userRepository;
     }
-
-    public Page<MemoFindAllResponseDto> getAllMemo(int page,int size) {
+    //메모를 전부가져오는 전체조회
+    //@Param page,size
+    public Page<MemoGetAllResponseDto> getAllMemo(int page, int size) {
         Sort.Direction direction = Sort.Direction.DESC;
+        //내림차순조회
         Sort sort = Sort.by(direction, "modifiedAt");
+        //수정일을 기준으로 합니다.
 
         Pageable pageable = PageRequest.of(page, size, sort);
         Page<Memo> memoList = memoRepository.findAll(pageable);
 
-        return memoList.map(MemoFindAllResponseDto::new);
+        return memoList.map(MemoGetAllResponseDto::new);
 
 
     }

@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Comment extends Timestamped{
 
-    //Memo와 Comment는 1대다 관계
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,6 +29,7 @@ public class Comment extends Timestamped{
     @Column(name = "comment_contents",nullable = false,length = 200)
     private String commentContent;
 
+    //Memo와 Comment는 1대다 관계
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "memo_id")
     private Memo memo;

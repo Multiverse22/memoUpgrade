@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-public class MemoFindAllResponseDto {
+public class MemoGetAllResponseDto {
     private String title;
     private String memoContents;
     private Long commentCount;
@@ -14,7 +14,7 @@ public class MemoFindAllResponseDto {
     private LocalDateTime modifiedAt;
     private String postUser;
 
-    public MemoFindAllResponseDto(Memo memo) {
+    public MemoGetAllResponseDto(Memo memo) {
         this.title = memo.getTitle();
         this.memoContents = memo.getMemoContents();
         this.commentCount = (long) memo.getCommentList().size();
