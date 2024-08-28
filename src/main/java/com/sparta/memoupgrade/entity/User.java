@@ -17,17 +17,16 @@ public class User extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,length = 50)
+    @Column(name = "name",nullable = false,length = 50)
     private String name;
 
-    @Column(nullable = false,length = 50)
+    @Column(name = "email",nullable = false,length = 50)
     private String email;
 
-    @OneToMany
-    private List<Memo> MemoList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    private List<Draft> draftList = new ArrayList<>();
+    @OneToMany(mappedBy = "writer")
+    private List<Memo> memoList = new ArrayList<>();
+//    @OneToMany(mappedBy = "manager_user_id")
+//    private List<Draft> draftList = new ArrayList<>();
 
     public User(UserRequestDto requestDto) {
         this.name = requestDto.getName();

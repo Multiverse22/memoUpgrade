@@ -21,8 +21,9 @@ public class Memo extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_name",nullable = false,length = 50)
-    private String userName;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User writer;
 
     @Column(nullable = false,length = 50)
     private String title;
@@ -30,18 +31,16 @@ public class Memo extends Timestamped {
     @Column(name = "memo_contents",nullable = false,length = 50)
     private String memoContents;
 
-    @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
-    private Boolean isDeleted = false;
-
     @OneToMany(mappedBy = "memo",cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Comment> commentList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "memo")
-    private List<Draft> draftList = new ArrayList<>();
+//    @OneToMany(mappedBy = "memo",fetch = FetchType.LAZY)
+//    private List<Draft> draftList = new ArrayList<>();
 
-
+    public void setWriter(User writer) {
+        this.writer = writer;
+    }
     public Memo(MemoPostRequestDto requestDto) {
-        this.userName=requestDto.getUsername();
         this.title = requestDto.getTitle();
         this.memoContents = requestDto.getMemoContents();
     }

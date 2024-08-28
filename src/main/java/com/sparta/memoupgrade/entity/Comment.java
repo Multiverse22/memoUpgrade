@@ -30,7 +30,7 @@ public class Comment extends Timestamped{
     @Column(name = "comment_contents",nullable = false,length = 200)
     private String commentContent;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "memo_id")
     private Memo memo;
 

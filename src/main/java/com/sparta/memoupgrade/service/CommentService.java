@@ -24,27 +24,29 @@ public class CommentService {
         this.commentRepository = commentRepository;
     }
 
+    //댓글 저장
     public CommentPostResponseDto saveComment(Long memoId, CommentRequestDto requestDto) {
         Memo memo = memoRepository.findById(memoId).
                 orElseThrow(()-> new NoSuchElementException("해당 메모 없음"));
         Comment comment = new Comment(requestDto);
         comment.setMemo(memo);
 
-        Comment saveComment = commentRepository.save(comment);
+        commentRepository.save(comment);
 
         return new CommentPostResponseDto("댓글 작성완료",200,memo.getId());
 
     }
-
+    // 댓글 단건 조회
     public CommentGetResponseDto getComment(Long commentId) {
         Comment comment = findComment(commentId);
         return new CommentGetResponseDto(comment);
     }
-
+    // 댓글 다건 조회
     public List<CommentGetResponseDto> getAllComments(Long memoId) {
         List<Comment> comments = commentRepository.findAllByMemoId(memoId);
         return comments.stream().map(CommentGetResponseDto::new).toList();
     }
+    //댓글 업데이트 어노테이션필요함
     @Transactional
     public CommentResponseDto updateComment(Long commentId, CommentRequestDto requestDto) {
         Comment comment = findComment(commentId);

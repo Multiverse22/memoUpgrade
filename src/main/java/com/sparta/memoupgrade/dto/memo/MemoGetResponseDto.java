@@ -21,7 +21,7 @@ public class MemoGetResponseDto {
 
     public MemoGetResponseDto(Memo memo) {
         this.memoId=memo.getId();
-        this.userName=memo.getUserName();
+        this.userName=memo.getWriter().getName();
         this.title=memo.getTitle();
         this.memoContents=memo.getMemoContents();
         this.createdAt=memo.getCreatedAt();
