@@ -120,6 +120,11 @@
 ERD 다이어그램
 ![image](https://github.com/user-attachments/assets/d2b13d00-3e6a-4fae-a920-19eb5c4cc9d4)
 
+->수정사항
+
+
+![image](https://github.com/user-attachments/assets/4e81d113-f532-4373-a3d7-e1a6f355ae91)
+
 
 
 
