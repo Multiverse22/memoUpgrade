@@ -2,8 +2,8 @@
 
 + API 명 : 단일 일정 조회
 + HTTP METHOD : GET
-+ URL : api/memos/{id}
-+ Request : @Pathvariable = id값
++ URL : api/memos/{userId}
++ Request : @Pathvariable userId,@RequestBody MemoPostRequestDto requestDto
 
 + Response :
   ```
@@ -174,7 +174,7 @@
 + API 명 : 댓글 작성
 + HTTP METHOD : POST
 + URL : /api/comments/{memoId}
-+ Request :
++ Request :@PathVariable Long memoId, @RequestBody CommentRequestDto requestDto
   ```
   {
     "userName":"김길환",
@@ -251,7 +251,7 @@
 + API 명 : 댓글 수정
 + HTTP METHOD : PUT
 + URL : /api/comments/{commentId}
-+ Request : @Pathvariable commentId
++ Request : @Pathvariable commentId, @RequestBody CommentRequestDto requestDto
   ```
   {
     "userName":"변경된김길환",
