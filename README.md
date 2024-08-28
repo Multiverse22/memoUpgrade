@@ -229,7 +229,7 @@
         "createdAt": "2024-08-28T20:58:45.915011",
         "modifiedAt": "2024-08-28T20:58:45.915011"
     }
-]
+  ]
   ```
 ***
 9.댓글 삭제
@@ -238,13 +238,8 @@
 + HTTP METHOD : Delete
 + URL : /api/comments/{commentId}
 + Request : @Pathvariable commentId
-  ```
++ Response :6
   
-  ```
-+ Response :
-  ```
-  6
-  ```
 ***
 10.댓글 수정
 
@@ -328,7 +323,7 @@
             "email": "테스트2"
         }
     ]
-}
+  }
   ```
 ***
 14.유저 전체 조회
@@ -341,7 +336,7 @@
   ```
 + Response :
   ```
- {
+   {
     "content": []<<줄생겨서 닫았습니다
         {
             "name": "페이징테스트2",
@@ -411,7 +406,7 @@
     "first": true,
     "numberOfElements": 7,
     "empty": false
-}
+  }
   ```
 ***
 15.유저 삭제
