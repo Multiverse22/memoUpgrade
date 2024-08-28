@@ -22,6 +22,14 @@ public class UserController {
     public UserResponseDto saveUser(@RequestBody UserRequestDto requestDto) {
         return userService.saveUser(requestDto);
     }
+    //유저id,memo id,매니저id를 받아 해당메모가 유저id가 작성한게 맞으면 일정에 manager를 추가하는 API
+    @PostMapping("/{userId}/memos/{memoId}/mandate/{managerId}")
+    public String mandateUserToMemo(@PathVariable long userId, @PathVariable long memoId,
+                                    @PathVariable long managerId) {
+        userService.mandateUserToMemo(userId,memoId,managerId);
+        return "";
+    }
+
     //유저 가져오기
     //http://localhost:8080/api/users/{userId}
     @GetMapping("/{userId}")

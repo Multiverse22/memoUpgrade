@@ -56,13 +56,12 @@ public class MemoService {
         return new MemoResponseDto("작성 완료",201, saveMemo.getId());
     }
 
-    public MemoGetResponseDto getMemo(Long memoId) {
+    public MemoGetWithUsersResponseDto getMemo(Long memoId) {
         //id값으로 메모찾기
         Memo memo = memoRepository.findById(memoId).
                 orElseThrow(()->new NoSuchElementException("Id에 해당하는 할일이 없습니다."));
         //찾았다면 responseDto에 담아 반환
-        MemoGetResponseDto responseDto = new MemoGetResponseDto(memo);
-        return responseDto;
+        return new MemoGetWithUsersResponseDto(memo);
     }
 
     public Long deleteMemo(Long memoId) {

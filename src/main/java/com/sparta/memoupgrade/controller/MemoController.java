@@ -24,7 +24,7 @@ public class MemoController {
     }
     //일정 단건 조회
     @GetMapping("/{id}")
-    public MemoGetResponseDto getMemo(@PathVariable long id) {
+    public MemoGetWithUsersResponseDto getMemo(@PathVariable long id) {
         return memoService.getMemo(id);
     }
     //3. 일정 다건 조회 (수정일기준내림차순)

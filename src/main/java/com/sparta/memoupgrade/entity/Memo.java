@@ -28,7 +28,7 @@ public class Memo extends Timestamped {
     @Column(nullable = false,length = 50)
     private String title;
 
-    @Column(name = "memo_contents",nullable = false,length = 50)
+    @Column(name = "memo_contents",nullable = false,length = 200)
     private String memoContents;
 
     //해당일정에 연관된 댓글을 저장하는 리스트
